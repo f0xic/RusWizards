@@ -1,0 +1,74 @@
+{
+    "orders": [
+        {
+            "name": "Заказ №1",
+            "time": "12:40",
+            "totalPrice": "1145р.",
+            "positions": [
+                {
+                    "name": "Булочка",
+                    "count": "3",
+                    "price": "50р.",
+                    "weight": "30г.",
+                    "summ": "150р."
+                },
+                {
+                    "name": "Кофе",
+                    "count": "1",
+                    "price": "150р.",
+                    "weight": "200мл.",
+                    "summ": "150р."
+                },
+                {
+                    "name": "Салат",
+                    "count": "2",
+                    "price": "300р.",
+                    "weight": "150г.",
+                    "summ": "600р."
+                },
+                {
+                    "name": "Суп",
+                    "count": "1",
+                    "price": "245р.",
+                    "weight": "300мл.",
+                    "summ": "245р."
+                }
+            ]
+        },
+        {
+            "name": "Заказ №2",
+            "time": "14:55",
+            "totalPrice": "150р.",
+            "positions": [
+                {
+                    "name": "Булочка",
+                    "count": "3",
+                    "price": "50р.",
+                    "weight": "30г.",
+                    "summ": "150р."
+                }
+            ]
+        },
+        {
+            "name": "Заказ №3",
+            "time": "14:59",
+            "totalPrice": "845р.",
+            "positions": [
+                {
+                    "name": "Салат",
+                    "count": "2",
+                    "price": "300р.",
+                    "weight": "30г.",
+                    "summ": "600р."
+                },
+                {
+                    "name": "Суп",
+                    "count": "1",
+                    "price": "245р.",
+                    "weight": "30г.",
+                    "summ": "245р."
+                }
+            ]
+        }
+    ]
+}

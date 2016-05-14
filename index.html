@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+
+</head>
+<body>
+<div class="header">
+    <h1><p class="text-center text-uppercase">Заказы</p></h1>
+</div>
+
+<div class="orders" id="orderlist">
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/underscore-min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var panelTemplate = _.template('<div class="panel panel-default"><div class="panel-heading "><h4 class="panel-title"><a data-toggle="collapse" data-target="#hideme<%= orderId %>">' +
+                                       '<span class="label label-default"><%= orderNum %></span>   <span class="label label-success"><%= orderTime %></span>   <span class="label label-info"><%= orderPrice %></span></a></h4></div><%= orderTable %></div>');
+
+        var orderTableTemplate = _.template(
+                '<div id="hideme<%= orderId %>" class="collapse in">' +
+                    '<table class="table table-hover table-inverse">' +
+                    '<thead class="thead-inverse"><tr><th>Наименование</th><th>Количество порций</th><th>Цена за порцию</th><th>Вес порции</th><th>Общая стоимость</th></tr></thead>' +
+                    '<tbody><%= tbody %></tbody>' +
+                    '</table>' +
+                '</div>'
+        );
+        var orderTableRowOnePortionTemplate = _.template('<tr><td><%= name %></td><td></td><td></td><td><%= weight %></td><td><%= summ %></td></tr>');
+        var orderTableRowManyPortionsTemplate = _.template('<tr><td><%= name %></td><td><%= count %></td><td><%= price %></td><td><%= weight %></td><td><%= summ %></td></tr>');
+
+
+        $.getJSON('test.json', function (data) {
+
+            var orderHTML = '';
+
+            if (
+                typeof data != 'undefined'
+                && typeof data.orders != 'undefined'
+            ){
+                data.orders.forEach(function(order, i){
+
+                    // сбор позиций заказа
+                    var orderPositionsHTML = '';
+                    order.positions.forEach(function(orderRow){
+                        if(orderRow.count == 1)
+                            orderPositionsHTML += orderTableRowOnePortionTemplate(orderRow);
+                        else
+                            orderPositionsHTML += orderTableRowManyPortionsTemplate(orderRow);
+                    });
+
+                    //
+                    var orderTable = orderTableTemplate({ 'orderId': i, 'tbody': orderPositionsHTML });
+
+                    orderHTML += panelTemplate({"orderId": i, "orderNum": order.name, "orderTime": order.time,"orderPrice": order.totalPrice, "orderTable": orderTable});
+                });
+
+                $('#orderlist').append(orderHTML);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

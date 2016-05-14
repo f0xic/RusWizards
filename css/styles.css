@@ -1,0 +1,26 @@
+body {
+    background-color: #5acbb4;
+}
+.header p{
+    font-family: "Times New Roman", Times, serif;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+a:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+.panel{
+    margin-bottom: 40px;
+}
+.label{
+    font-weight: normal;
+    font-size: 15px;
+}
+.panel-title{
+    padding-bottom: 2px;
+}
+.table{
+    margin: 10px;
+}
