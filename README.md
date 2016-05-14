@@ -1,2 +1,0 @@
-# RusWizards
-Test
